@@ -1,0 +1,61 @@
+/* Home */
+/* base html style*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+::placeholder {
+  color:#555555;
+  opacity: 1;
+  font-weight: bold;
+}
+
+h1{
+  justify-content: center;
+  text-align: center;
+  font-size: 1.7em;
+  padding: 1em;
+  border-top: 5px solid #8EAECC;
+  border-bottom: 5px solid #8EAECC;
+  background-color: #f0ffca;
+  color: #2E6E9E;
+}
+
+/*Navigation Bar Style*/
+.navigation {
+  background-color: #1C5D99;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 15px;
+  border-bottom: 5px solid#8EAECC;
+  width: 100%;
+}
+
+.navbuttons {
+  list-style: none;
+  display: flex;
+  padding: 0%;
+}
+
+.navbuttons li {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.navbuttons a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 30px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: color 0.3s ease;
+}
+
+.navbuttons a:hover {
+  color: #8EAECC;
+}
