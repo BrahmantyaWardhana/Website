@@ -18,7 +18,7 @@ function getData() {
   })
   .then(response => response.json())
   .then(data => {
-    document.getElementById('result').innerHTML = `<p>ID: ${data.id}</p><p>Name: ${data.name}</p><p>Age: ${data.age}</p>`;
+    document.getElementById('result').innerHTML = `<p>ID: ${data.sensorId}</p><p>Name: ${data.name}</p><p>Age: ${data.age}</p>`;
   })
   .catch(error => console.error('Error:', error));
 }
