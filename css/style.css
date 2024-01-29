@@ -14,15 +14,8 @@ html {
   font-weight: bold;
 }
 
-h1{
-  justify-content: center;
-  text-align: center;
-  font-size: 1.7em;
-  padding: 1em;
-  border-top: 5px solid #8EAECC;
-  border-bottom: 5px solid #8EAECC;
-  background-color: #f0ffca;
-  color: #2E6E9E;
+p {
+  font-size: 2;
 }
 
 /*Navigation Bar Style*/
@@ -58,4 +51,23 @@ h1{
 
 .navbuttons a:hover {
   color: #8EAECC;
+}
+
+/* Container css */
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #1C5D99;
+  justify-content: center;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 20%;
+  margin: 10px;
+  padding: 2%;
+  text-align: left;
+  line-height: 1.8;
+  font-size: 30px;
 }
