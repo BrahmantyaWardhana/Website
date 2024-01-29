@@ -5,20 +5,24 @@ jQuery(function($) {
 });
 
 // display sensor data function
-function getData() {
-  const sensorId = document.getElementById('sensorId').value;
+document.addEventListener('DOMContentLoaded', function () {
+  const dynamicTextElement = document.getElementById('dynamicText');
+  const refreshButton = document.getElementById('refreshButton');
 
-  // Make an asynchronous POST request to the server
-  fetch('/getData', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: `sensorId=${sensorId}`,
-  })
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('result').innerHTML = `<p>ID: ${data.sensorId}</p><p>Name: ${data.name}</p><p>Age: ${data.age}</p>`;
-  })
-  .catch(error => console.error('Error:', error));
-}
+  refreshButton.addEventListener('click', function () {
+      fetchDataAndUpdateText();
+  });
+
+  function fetchDataAndUpdateText() {
+      // Use the Fetch API to get data from your server
+      fetch('your_server_endpoint')
+          .then(response => response.json())
+          .then(data => {
+              // Update the text with the fetched data
+              dynamicTextElement.textContent = data.updatedText;
+          })
+          .catch(error => {
+              console.error('Error fetching data:', error);
+          });
+  }
+});
