@@ -1,8 +1,13 @@
-// jQuery 3.x-style ready event and locally scoped $
-jQuery(function($) {
-  $('html').removeClass('nojs');
-  $('html').addClass('hasjs');
-});
+// Click function for containers
+
+// Function to navigate to a different page based on the sensor ID
+function navigateToPage(sensorId) {
+  // Construct the URL for the destination page
+  var destinationPage = sensorId + '.html';
+
+  // Navigate to the destination page
+  window.location.href = destinationPage;
+}
 
 // display sensor data function
 document.addEventListener('DOMContentLoaded', function () {
