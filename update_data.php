@@ -1,5 +1,4 @@
 <?php
-// Database connection details
 $servername = "localhost";
 $username = "pi";
 $password = "raspberry";
@@ -14,21 +13,29 @@ if ($conn->connect_error) {
 }
 
 // Ensure sensor_id is provided
-if (!isset($_GET['sensor_id'])) {
-    die("Sensor ID not provided");
+$sensor_id = isset($_GET['sensor_id']) ? $_GET['sensor_id'] : null;
+
+if ($sensor_id === null) {
+    // Handle the case where sensor_id is not provided
+    echo json_encode(array(
+        'error' => 'Sensor ID not provided'
+    ));
+    exit();
 }
 
-// Prepare and execute query
+// Example query
 $sql = "SELECT temperature, battery, camera_status FROM sensor_data WHERE sensor_id = ? ORDER BY sensor_data_id DESC LIMIT 1";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $_GET['sensor_id']);
-$stmt->execute();
-$stmt->store_result();
 
-// Check if any rows are returned
-if ($stmt->num_rows > 0) {
+// Prepare and bind parameters
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $sensor_id);
+
+// Execute the statement
+if ($stmt->execute()) {
     // Bind the result variables
     $stmt->bind_result($temperature, $battery, $cameraStatus);
+
+    // Fetch the values
     $stmt->fetch();
 
     // Close the statement
@@ -44,10 +51,10 @@ if ($stmt->num_rows > 0) {
         'cameraStatus' => $cameraStatus
     ));
 } else {
-    // No data found for the provided sensor ID
+    // Handle query execution error
     echo json_encode(array(
-        'error' => 'No data found for the provided sensor ID'
+        'error' => 'Error executing the query: ' . $stmt->error
     ));
+    exit();
 }
-
 ?>
