@@ -8,6 +8,10 @@ html {
   height: 100vh;
 }
 
+h1 {
+  text-align: center;
+}
+
 ::placeholder {
   color:#555555;
   opacity: 1;
@@ -70,4 +74,32 @@ p {
   text-align: center;
   line-height: 1;
   font-size: 3em;
+}
+
+.button {
+  background-color: #1C5D99;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.sensor-image-container {
+  width: 80%;
+  padding: 0.1%;
+  height: 500px;
+  margin: auto;
+  background-color: #1C5D99;
+  align-items: center;
+  color: white;
+}
+
+.button-container {
+  margin: auto;
+  width: 80%;
 }
