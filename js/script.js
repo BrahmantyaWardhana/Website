@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSensorValues(sensorId, data);
       }
     };
+    
     // Replace "update_data.php" with the actual server-side script URL
     xhr.open("GET", "update_data.php?sensor_id=" + sensorId, true);
     xhr.send();
