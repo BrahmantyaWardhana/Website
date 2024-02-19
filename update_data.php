@@ -1,4 +1,5 @@
 <?php
+// Database connection details
 $servername = "localhost";
 $username = "pi";
 $password = "raspberry";
@@ -7,35 +8,46 @@ $dbname = "ipro497";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Example query
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Ensure sensor_id is provided
+if (!isset($_GET['sensor_id'])) {
+    die("Sensor ID not provided");
+}
+
+// Prepare and execute query
 $sql = "SELECT temperature, battery, camera_status FROM sensor_data WHERE sensor_id = ? ORDER BY sensor_data_id DESC LIMIT 1";
-
-// Prepare and bind parameters (replace "your_table" with your actual table name)
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $sensor_id);
-
-// Set the sensor_id based on the request
-$sensor_id = $_GET['sensor_id'];
-
-// Execute the statement
+$stmt->bind_param("i", $_GET['sensor_id']);
 $stmt->execute();
+$stmt->store_result();
 
-// Bind the result variables
-$stmt->bind_result($temperature, $battery, $cameraStatus);
+// Check if any rows are returned
+if ($stmt->num_rows > 0) {
+    // Bind the result variables
+    $stmt->bind_result($temperature, $battery, $cameraStatus);
+    $stmt->fetch();
 
-// Fetch the values
-$stmt->fetch();
+    // Close the statement
+    $stmt->close();
 
-// Close the statement
-$stmt->close();
+    // Close the connection
+    $conn->close();
 
-// Close the connection
-$conn->close();
+    // Return the data as JSON
+    echo json_encode(array(
+        'temperature' => $temperature,
+        'battery' => $battery,
+        'cameraStatus' => $cameraStatus
+    ));
+} else {
+    // No data found for the provided sensor ID
+    echo json_encode(array(
+        'error' => 'No data found for the provided sensor ID'
+    ));
+}
 
-// Return the data as JSON
-echo json_encode(array(
-    'temperature' => $temperature,
-    'battery' => $battery,
-    'cameraStatus' => $cameraStatus
-));
 ?>
