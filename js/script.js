@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', function () {
   const refreshButton = document.getElementById('refreshButton');
   const sensorsContainer = document.getElementById('sensorsContainer');
@@ -20,9 +18,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to fetch data and update values
   function fetchDataAndUpdateValues() {
-    // Implement your logic for fetching and updating data here
-    // For example, you can make an AJAX request or fetch API data
-    console.log('Fetching and updating data...');
+    // Loop through each sensor and make an AJAX request
+    for (let i = 1; i <= 16; i++) {
+      updateValues(i);
+    }
+  }
+
+  // Function to update values for a specific sensor
+  function updateValues(sensorId) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        updateSensorValues(sensorId, data);
+      }
+    };
+    // Replace "update_data.php" with the actual server-side script URL
+    xhr.open("GET", "update_data.php?sensor_id=" + sensorId, true);
+    xhr.send();
+  }
+
+  // Function to update sensor values on the webpage
+  function updateSensorValues(sensorId, data) {
+    document.getElementById("temperature" + sensorId).innerText = data.temperature;
+    document.getElementById("battery" + sensorId).innerText = data.battery;
+    document.getElementById("cameraStatus" + sensorId).innerText = data.cameraStatus;
   }
 
   // Add click event listeners to each sensor div
