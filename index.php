@@ -1,3 +1,7 @@
+<?
+  include 'php/dbh.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,8 +14,9 @@
     <header>
       <nav class="navigation">
         <ul class="navbuttons">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="drone.html">Drone Control</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="radio.php">Radio</a></li>
+          <li><a href="drone.php">Drone Control</a></li>
           <li><a id="refreshButton" onclick="">Refresh</a></li>
         </ul>
       </nav>
