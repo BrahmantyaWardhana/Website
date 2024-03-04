@@ -10,19 +10,11 @@
     <header>
       <nav class="navigation">
         <ul class="navbuttons">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="drone.php">Drone Control</a></li>
         </ul>
       </nav>
     </header>
-    <div class="sensor-image-container">
-      <h1>Sensor 11</h1>
-      <div class="image11">
-
-      </div>
-    </div>
-    <div class="button-container">
-      <button class="button">Increase by x</button>
-      <button class="button">Lower by x</button>
-    </div>
-    <script src="js/script.js"></script>
+    <h1>Drone</h1>
+    <script src="js/drone.js"></script>
   </body>

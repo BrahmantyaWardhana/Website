@@ -10,13 +10,13 @@
     <header>
       <nav class="navigation">
         <ul class="navbuttons">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.php">Home</a></li>
         </ul>
       </nav>
     </header>
     <div class="sensor-image-container">
-      <h1>Sensor 6</h1>
-      <div class="image6">
+      <h1>Sensor 16</h1>
+      <div class="image16">
 
       </div>
     </div>
