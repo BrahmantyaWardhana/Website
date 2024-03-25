@@ -1,18 +1,19 @@
-function submitForm() {
-  var userInput = document.getElementById('user_input').value;
+document.addEventListener('DOMContentLoaded', function () {
+  // Placeholder function for sensor variable
+  function sensorVariable(sensorId) {
+      // Print variable
+      console.log(sensorId);
+  }
 
-  // Use AJAX to send the input to the CGI script
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/cgi-bin/process_data.cgi', true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  // Add click event listeners to each sensor div
+  for (let i = 1; i <= 16; i++) {
+      const sensorId = 'sensor' + i;
+      const sensorDiv = document.getElementById(sensorId);
 
-  xhr.onreadystatechange = function() {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-          // Display the response on the webpage
-          document.getElementById('output').innerHTML = xhr.responseText;
-      }
-  };
+      // Add click event listener to each sensor div
+      sensorDiv.addEventListener('click', function () {
+          sensorVariable(i);
+      });
+  }
 
-  // Send the user input to the CGI script
-  xhr.send('user_input=' + encodeURIComponent(userInput));
-}
+});
