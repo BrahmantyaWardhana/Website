@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Add click event listener to each refresh button inside the sensor div
+    const buttonMessage = i; //------------------------------// Modify this to send messages on button click
     const buttonId = 'button' + i;
     const buttonDiv = document.getElementById(buttonId);
 
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
       event.stopPropagation();
       
       // Call the refresh function
-      refreshIndividual(buttonId);
+      refreshIndividual(buttonMessage);
     });
   }
 
