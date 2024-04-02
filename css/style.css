@@ -6,6 +6,7 @@
 
 html {
   height: 100vh;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 h1 {
@@ -55,6 +56,7 @@ p {
 
 .navbuttons a:hover {
   color: #8EAECC;
+  cursor: pointer;
 }
 
 /* Container css */
@@ -74,6 +76,7 @@ p {
   text-align: center;
   line-height: 1;
   font-size: 3em;
+  cursor: pointer;
 }
 
 .button {
@@ -87,6 +90,11 @@ p {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+.sensor-button {
+  border-style: solid;
+  border-color: #1C5D99;
 }
 
 .sensor-image-container {
