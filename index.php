@@ -27,7 +27,7 @@
         <p id="temperature1">Temperature</p>
         <p id="battery1">Battery</p>
         <p id="cameraStatus1">Initial Text</p>
-        <div class="sensor-button" id="button1">
+        <div class="sensor-button" id="button1" onclick="sendMessage('Refresh 1')">
           <p>Button</p>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <p id="temperature2">Temperature</p>
         <p id="battery2">Battery</p>
         <p id="cameraStatus2">Initial Text</p>
-        <div class="sensor-button" id="button2">
+        <div class="sensor-button" id="button2" onclick="sendMessage('Refresh 2')">
           <p>Button</p>
         </div>
       </div>
@@ -45,7 +45,7 @@
         <p id="temperature3">Temperature</p>
         <p id="battery3">Battery</p>
         <p id="cameraStatus3">Initial Text</p>
-        <div class="sensor-button" id="button3">
+        <div class="sensor-button" id="button3" onclick="sendMessage('Refresh 3')">
           <p>Button</p>
         </div>
       </div>  
@@ -54,7 +54,7 @@
         <p id="temperature4">Temperature</p>
         <p id="battery4">Battery</p>
         <p id="cameraStatus4">Initial Text</p>
-        <div class="sensor-button" id="button4">
+        <div class="sensor-button" id="button4" onclick="sendMessage('Refresh 4')">
           <p>Button</p>
         </div>
       </div>
@@ -63,7 +63,7 @@
         <p id="temperature5">Temperature</p>
         <p id="battery5">Battery</p>
         <p id="cameraStatus5">Initial Text</p>
-        <div class="sensor-button" id="button5">
+        <div class="sensor-button" id="button5" onclick="sendMessage('Refresh 5')">
           <p>Button</p>
         </div>
       </div>
@@ -72,7 +72,7 @@
         <p id="temperature6">Temperature</p>
         <p id="battery6">Battery</p>
         <p id="cameraStatus6">Initial Text</p>
-        <div class="sensor-button" id="button6">
+        <div class="sensor-button" id="button6" onclick="sendMessage('Refresh 6')">
           <p>Button</p>
         </div>
       </div>
@@ -81,7 +81,7 @@
         <p id="temperature7">Temperature</p>
         <p id="battery7">Battery</p>
         <p id="cameraStatus7">Initial Text</p>
-        <div class="sensor-button" id="button7">
+        <div class="sensor-button" id="button7" onclick="sendMessage('Refresh 7')">
           <p>Button</p>
         </div>
       </div>
@@ -90,7 +90,7 @@
         <p id="temperature8">Temperature</p>
         <p id="battery8">Battery</p>
         <p id="cameraStatus8">Initial Text</p>
-        <div class="sensor-button" id="button8">
+        <div class="sensor-button" id="button8" onclick="sendMessage('Refresh 8')">
           <p>Button</p>
         </div>
       </div>
@@ -99,7 +99,7 @@
         <p id="temperature9">Temperature</p>
         <p id="battery9">Battery</p>
         <p id="cameraStatus9">Initial Text</p>
-        <div class="sensor-button" id="button9">
+        <div class="sensor-button" id="button9" onclick="sendMessage('Refresh 9')">
           <p>Button</p>
         </div>
       </div>
@@ -108,7 +108,7 @@
         <p id="temperature10">Temperature</p>
         <p id="battery10">Battery</p>
         <p id="cameraStatus10">Initial Text</p>
-        <div class="sensor-button" id="button10">
+        <div class="sensor-button" id="button10" onclick="sendMessage('Refresh 10')">
           <p>Button</p>
         </div>
       </div>
@@ -117,7 +117,7 @@
         <p id="temperature11">Temperature</p>
         <p id="battery11">Battery</p>
         <p id="cameraStatus11">Initial Text</p>
-        <div class="sensor-button" id="button11">
+        <div class="sensor-button" id="button11" onclick="sendMessage('Refresh 11')">
           <p>Button</p>
         </div>
       </div>
@@ -126,7 +126,7 @@
         <p id="temperature12">Temperature</p>
         <p id="battery12">Battery</p>
         <p id="cameraStatus12">Initial Text</p>
-        <div class="sensor-button" id="button12">
+        <div class="sensor-button" id="button12" onclick="sendMessage('Refresh 12')">
           <p>Button</p>
         </div>
       </div>
@@ -135,7 +135,7 @@
         <p id="temperature13">Temperature</p>
         <p id="battery13">Battery</p>
         <p id="cameraStatus13">Initial Text</p>
-        <div class="sensor-button" id="button13">
+        <div class="sensor-button" id="button13" onclick="sendMessage('Refresh 13')">
           <p>Button</p>
         </div>
       </div>
@@ -144,7 +144,7 @@
         <p id="temperature14">Temperature</p>
         <p id="battery14">Battery</p>
         <p id="cameraStatus14">Initial Text</p>
-        <div class="sensor-button" id="button14">
+        <div class="sensor-button" id="button14" onclick="sendMessage('Refresh 14')">
           <p>Button</p>
         </div>
       </div>
@@ -153,7 +153,7 @@
         <p id="temperature15">Temperature</p>
         <p id="battery15">Battery</p>
         <p id="cameraStatus15">Initial Text</p>
-        <div class="sensor-button" id="button15">
+        <div class="sensor-button" id="button15" onclick="sendMessage('Refresh 15')">
           <p>Button</p>
         </div>
       </div>
@@ -162,10 +162,23 @@
         <p id="temperature16">Temperature</p>
         <p id="battery16">Battery</p>
         <p id="cameraStatus16">Initial Text</p>
-        <div class="sensor-button" id="button16">
+        <div class="sensor-button" id="button16" onclick="sendMessage('Refresh 16')">
           <p>Button</p>
         </div>
       </div>
     </div>
+    <script>
+    const webSocket = new WebSocket('ws://localhost:443/');
+    webSocket.addEventListener("open", () => {
+      console.log("We are connected");
+    });
+    
+    function sendMessage(input) {
+      var inputMessage = input
+      webSocket.send(inputMessage)
+      inputMessage.value = ""
+      event.preventDefault();
+    }
+ </script>
     <script src="js/script.js"></script>
   </body>
