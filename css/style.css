@@ -79,6 +79,68 @@ p {
   cursor: pointer;
 }
 
+.sensor-button {
+  border-style: solid;
+  border-color: #1C5D99;
+}
+
+/*---------------------------------- Sensor page css ----------------------------------*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  grid-area: header;
+  background-color: #f1f1f1;
+  padding: 6px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header header header header' 
+    'left middle middle middle middle right' 
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+} 
+
+.left,
+.middle,
+.right {
+  padding: 10px;
+  height: 480px;
+  border-style: solid;
+  border-color: #1C5D99;
+  margin: 10px;
+  padding: 2%;
+  text-align: center;
+  line-height: 1;
+  font-size: 3em;
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+
 .button {
   background-color: #1C5D99;
   border: none;
@@ -90,24 +152,4 @@ p {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-}
-
-.sensor-button {
-  border-style: solid;
-  border-color: #1C5D99;
-}
-
-.sensor-image-container {
-  width: 80%;
-  padding: 0.1%;
-  height: 500px;
-  margin: auto;
-  background-color: #1C5D99;
-  align-items: center;
-  color: white;
-}
-
-.button-container {
-  margin: auto;
-  width: 80%;
 }
